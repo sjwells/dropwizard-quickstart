@@ -4,6 +4,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
+import com.github.sjwells.dropwizardquickstart.healthchecks.DropwizardQuickstartHealthcheck;
 import com.github.sjwells.dropwizardquickstart.http.ExampleResource;
 
 public class DropwizardQuickstartApplication extends Application<DropwizardQuickstartConfiguration> {
@@ -23,6 +24,8 @@ public class DropwizardQuickstartApplication extends Application<DropwizardQuick
 			throws Exception {
 		final ExampleResource resource = new ExampleResource();
 		environment.jersey().register(resource);
+		final DropwizardQuickstartHealthcheck healthcheck = new DropwizardQuickstartHealthcheck();
+		environment.healthChecks().register("default", healthcheck);
 		
 	}
 

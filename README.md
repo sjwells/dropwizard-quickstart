@@ -23,3 +23,19 @@ You should see the following Json response:
         "message": "HelloWorld",
         "id": 1
     }
+    
+There is also a default healthcheck that does nothing. You can access it here:
+http://localhost:8081/healthcheck
+
+
+You should see the following:
+
+    {
+        "deadlocks": {
+            "healthy": true
+        },
+        "default": {
+            "healthy": true,
+            "message": "You should really do some proper checks here"
+        }
+    }
